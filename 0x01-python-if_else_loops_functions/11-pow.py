@@ -2,19 +2,12 @@
 
 
 def pow(a, b):
-	# creating a variable that holds result of product.
-	res = 1
-	base = 1
-	numb = 0
-
-	if b < 0:
-		numb = b
-		b = (-1) * b
-
-	for i in range(b):
-		res *= a
-		base = res * res
-
-	if numb  < 0:
-		res /= base
-	return result
+    """
+    Computes a raised to the power of b
+    Arguments:
+        a: integer
+        b: integer
+    Return:
+        The value of a ^ b
+    """
+    return a ** b
