@@ -1,48 +1,54 @@
 #!/usr/bin/python3
-"""5-square.py"""
+"""Square module."""
 
 
 class Square:
-    """Defines a square"""
+    """Defines a square."""
 
     def __init__(self, size=0):
-        """
-        Creates an instance of Square
+        """Constructor.
         Args:
-            size: size of the square
+            size: length of side of the square.
         """
-        self.size = size
+        if not (isinstance(size, int)):
+            raise TypeError("size must be an integer")
+        if size < 0:
+            raise ValueError("size must be >= 0")
+        self.__size = size
 
     @property
     def size(self):
-        """
-        Sets and gets the value of private size attribute
+        """Properties for the length of a sise of a square.
+        Raises:
+            TypeError: if size is not an integer.
+            ValueError: If size < 0.
         """
         return self.__size
 
     @size.setter
     def size(self, value):
-        if not isinstance(value, int):
-            raise TypeError("size must be of type integer")
-
+        """ setter function for private attribute size
+            Args:
+                value: value to be set.
+            Returns:
+                nothing.
+        """
+        if not (isinstance(value, int)):
+            raise TypeError("size must be an integer")
         if value < 0:
             raise ValueError("size must be >= 0")
-
         self.__size = value
 
     def area(self):
+        """Area of the square.
+        Returns:
+            thee size squared.
         """
-        Finds the area of the square
-        """
-        return self.__size * self.__size
+        return self.__size ** 2
 
     def my_print(self):
-        """
-        Prints the square using #
-        """
-        for i in range(self.__size):
-            print("#" * self.__size)
-
-        if (self.__size == 0):
-            print()
-
+        """Prints the square"""
+        for i in range(self.size):
+            for j in range(self.size):
+                print("#", end="\n" if j is self.size - 1 and i != j else "")
+        print()
